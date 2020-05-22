@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page</title>
+
+    <style>   
+    .divbg {
+        width: 200px;
+        background-color: #ddd;
+    }
+    </style>
+
+    <script>
+        function fibonacci(n) {
+            let a = 1;
+            let b = 1;
+            for (let i = 3; i <= n; i++) {
+                let c = a + b;
+                a = b;
+                b = c;
+            }
+            resultFibonacci.textContent = b;
+            }
+
+            function factorial(number) {
+                let resultFactorial = 1;
+
+                for (let z = 2; z <= number; z++) {
+                    resultFactorial = resultFactorial * z;
+                }
+
+                resultFactorialText.textContent = resultFactorial;
+                }
+
+    </script>
+
+</head>
+
+<body>
+
+<div >
+    <div>
+        <h2>Fibonacci number calculator</h2>
+        <p style="font-size: small;">correct until 78 ((</p>
+    </div>
+    <div><input type="number" size="10" name="num" oninput="fibonacci(this.value);"></div> 
+    <div id="resultFibonacci"></div>
+</div>
+
+<div >
+    <div>
+        <h2>Factorial number calculator</h2>
+    </div>
+    <div><input type="number" size="10" name="num" oninput="factorial(this.value);"></div> 
+    <div id="resultFactorialText"></div>
+</div>
+
+
+
+
+
+</body>
+</html>
+    
