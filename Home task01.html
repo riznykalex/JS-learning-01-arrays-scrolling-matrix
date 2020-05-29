@@ -213,6 +213,43 @@
             }
 
 
+            function showMatrixMainDiagSum(array1) {
+
+                let sumMainDiag = 0;
+                for (let i = 0; i < array1.length; i++) {           
+                        let j = i;
+                        sumMainDiag = sumMainDiag + array1[i][j];
+                    }
+                matrixMainDiagSum.textContent = sumMainDiag;
+                }
+
+            function showMatrixRightDiagSum(array1) {
+
+                let sumRightDiag = 0;
+                for (let i = 0; i < array1.length-1; i++) {           
+                        let j = i+1;
+                        sumRightDiag = sumRightDiag + array1[i][j];
+                    }
+                matrixMainDiagSum.textContent = sumRightDiag;
+                }
+
+
+            function showMatrixLeftDiagSum(array1) {
+
+                let sumLeftDiag = 0;
+                for (let i = 1; i < array1.length; i++) {           
+                        let j = i-1;
+                        sumLeftDiag = sumLeftDiag + array1[i][j];
+                    }
+                matrixMainDiagSum.textContent = sumLeftDiag;
+                }
+
+
+
+
+
+
+
 
             function sortMatrix(array1) {
                 let newArray = [];
@@ -239,6 +276,17 @@
                 return array1;
                 }
             
+
+
+            function ShowSticks(){
+                let q = document.getElementById("stickQuantity").value;
+                let s = sticks.sticksSelect.value;
+                let n = q - s;
+                SticksShow.textContent = n;
+
+            }
+
+
 
 
 
@@ -321,7 +369,7 @@
 
     <!---Формула Герона -->
     <div>
-        <p>Формула Герона</p>
+        <p>Определить принадлежность точки треугольнику</p>
         <input type="button" value="Odd Sort Asc" onclick="00000(simpleArray)">
         <p></p>
     </div>
@@ -352,12 +400,13 @@
 
     <!---Сумма главной и побочной диагонали -->
     <div>
-        <p>Сумма главной и побочной диагонали</p>
-        <input type="button" value="Odd Sort Asc" onclick="000000(simpleArray)">
-
+        <p>Сумма главной диагонали</p>
+        <input type="button" value="Left Diag Sum" onclick="showMatrixLeftDiagSum(matrix)">
+        <input type="button" value="Main Diag Sum" onclick="showMatrixMainDiagSum(matrix)">
+        <input type="button" value="Right Diag Sum" onclick="showMatrixRightDiagSum(matrix)">
         <p></p>
     </div>
-    <div id="oddSortedShow"></div>
+    <div id="matrixMainDiagSum"></div>
     <div><p></p></div>
 
 
@@ -376,13 +425,26 @@
 
     <!---Задача с палочками -->
     <div>
-        <p>Задача с палочками</p>
-        <input type="button" value="Odd Sort Asc" onclick="000000(simpleArray)">
+        <h3>Задача с палочками</h3>
 
-        <p></p>
+        <form>
+            <p>Выберите количество палочек</p>
+            <p><input type="range" min="10" max="20" id="stickQuantity" oninput="ShowSticks()"></p>
+        </form>
+
+        <p id="SticksShow"></p>
     </div>
-    <div id="oddSortedShow"></div>
-    <div><p></p></div>
+    <div>
+        <form name="sticks">
+            <select name="sticksSelect" size="4">
+                <option disabled>Выберите количество</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </form>
+    </div>
+    <div><input type="button" value="Go" onclick="ShowSticks()"></div>
 
 
 
