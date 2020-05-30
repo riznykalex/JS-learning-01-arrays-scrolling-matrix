@@ -216,7 +216,6 @@
             let str ="";
             for (let i = 0; i < array1.length; i++) {           //строки
                 for (let j = 0; j < array1[i].length; j++) {    //столбцы
-                    alert(array1[i][j]);
                     str = str + " | " + array1[i][j];
 
                 }
@@ -323,37 +322,45 @@
             let array=[];
             let n=1;
             for (let i=0; i<dim; i++ ){
-
+                array[i] = [];
                     for (let j=0; j<dim; j++){
-                        array[[i][j]] = n;
-                        console.log(i,j,n,array[[i][j]]);
+                        array[i][j] = n;
+                        console.log(i,j,n,array[i][j]);
 
                         n++;
                         }
 
             }
-            alert(array.length);
-            //console.log(array);
-         return array;
+
+            let str ="";
+            for (let i = 0; i < array.length; i++){
+                for (let j = 0; j < array.length; j++){
+                    str = str + " | " + array[i][j];
+                }
+                str = str + "| \n";
+            }
+
+            matrixSnakeFill.textContent = str;
+
         }
 
 
 
 
-        function showSnakeMatrix(array1) {
+        function showSnakeMatrix(sampleArray) {
 
             let str ="";
-            for (let i = 0; i < array1.length; i++) {           //строки
-                for (let j = 0; j < array1[i].length; j++) {    //столбцы
-                    alert(array1[i][j]);
-                    str = str + " | " + array1[i][j];
+            for (let i = 0; i < sampleArray.length; i++) {           //строки
+                for (let j = 0; j < sampleArray[i].length; j++) {    //столбцы
+
+                    str = str + " | " + sampleArray[i][j];
 
                 }
                 str = str + "| \n";
             }
 
-            //matrixShow.textContent = str;
-            return str;
+            matrixSnakeFill.textContent = str;
+
         }
 
 
@@ -487,14 +494,14 @@
     <!---Заполнение элементов матрицы "Змейкой" из угла  -->
     <div>
         <p>Заполнение элементов матрицы "Змейкой" из угла</p>
-        <input type="button" value="Snake from Corner" onclick="showSnakeMatrix(matrixSnakeFillCorner(4))">
+        <input type="button" value="Snake from Corner" onclick="matrixSnakeFillCorner(4)">
 
         <p></p>
     </div>
     <div id="matrixSnakeFill" style="white-space: pre-line;"></div>
     <div><p></p></div>
 
-    <!---Формула Герона -->
+    <!---
     <div>
         <p>Определить принадлежность точки треугольнику</p>
         <input type="button" value="Odd Sort Asc" onclick="00000(simpleArray)">
@@ -502,7 +509,7 @@
     </div>
     <div id="oddSortedShow00"></div>
     <div><p></p></div>
-
+Формула Герона -->
 
 
 
