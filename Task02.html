@@ -236,14 +236,11 @@
         }
 
         function newSnakeIndex(i){
-
-            return {
-                x: Math.floor(i / 4),
-                y: i % 4
-            };
-        }
-
-
+                return {
+                    x: Math.floor(i / 4),
+                    y:   ((Math.floor(i / 4)) % 2 ? 3-i%4 : i%4)
+                };
+    }
 
         function sortMatrix(array1) {
 
@@ -295,8 +292,8 @@
 
                     for (let i = firstIndex; i < lengthArr; i++) {                  //считаем от большего
 
-                        real_largest = newIndex(firstIndex);                       //преобразовываем в 2х мерный индекс большого
-                        newOne = newIndex(i);                                      //преобразовываем в 2х мерный индекс следующего
+                        real_largest = newSnakeIndex(firstIndex);                       //преобразовываем в 2х мерный индекс большого
+                        newOne = newSnakeIndex(i);                                      //преобразовываем в 2х мерный индекс следующего
 
                         if (array1[real_largest.x][real_largest.y] > array1[newOne.x][newOne.y]) {      //сравниваем "большой" сс следующим
                             largest = i;                                            //если след больше меняем индекс
@@ -304,8 +301,8 @@
                         }
                     }
 
-                    newOne = newIndex(firstIndex);                                   //преобразовываем в 2х мерный индекс нового первого
-                    real_largest = newIndex(largest);                                //преобразовываем в 2х мерный индекс нового большего
+                    newOne = newSnakeIndex(firstIndex);                                   //преобразовываем в 2х мерный индекс нового первого
+                    real_largest = newSnakeIndex(largest);                                //преобразовываем в 2х мерный индекс нового большего
 
                     tempItem = array1[newOne.x][newOne.y];                                  //обмен значений
                     array1[newOne.x][newOne.y] = array1[real_largest.x][real_largest.y];
@@ -405,7 +402,7 @@
         <!---- <input type="button" value="Random" onclick="generateMatrix(100)">---->
         <input type="button" value="Show Matrix" onclick="matrixShow.textContent = showMatrix(matrix)">
         <input type="button" value="Matrix Sort" onclick="sortMatrix(matrix)">
-        <input type="button" value="Snake Sort" onclick=snakeSortMatrix(matrix)">
+        <input type="button" value="Snake Sort" onclick="snakeSortMatrix(matrix)">
         <p></p>
     </div>
     <div id="matrixShow" style="white-space: pre-line;"></div>
