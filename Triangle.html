@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <style>
+
+    </style>
+    <script>
+
+        function draw() {
+        var canvas = document.getElementById('Canvas');
+        if (canvas.getContext) {
+            ctx.strokeRect(50,50,50,50);
+        }
+        }
+
+
+        function triangle(){
+        var canvas = document.getElementById("Canvas"), 
+            context = canvas.getContext("2d");
+        context.beginPath();
+        context.moveTo(30, 20);
+        context.lineTo(150, 140);
+        context.lineTo(250, 30);
+        context.closePath();
+        context.strokeStyle = "red";
+        context.stroke();
+    }
+
+
+    </script>
+  </head>
+  <body>
+    <!-- page content -->
+    <form>
+        <div>
+            <h4>Координаты вершин треугольника ABC и контрольной точки D</h4>
+        </div>
+        <div>
+          <label for="pointAX">Точка A: X</label>
+          <input id="pointAX" type="number" name="pointAX" step="1" min="0" max="10" required>          
+          <label for="pointAY">Y </label>
+          <input id="pointAY" type="number" name="pointAY" step="1" min="0" max="10" required>          
+
+        </div>
+        <div>
+            <label for="pointBX">Точка B: X</label>
+            <input id="pointBX" type="number" name="pointAX" step="1" min="0" max="10" required>          
+            <label for="pointBY">Y </label>
+            <input id="pointBY" type="number" name="pointBY" step="1" min="0" max="10" required>          
+
+
+          </div>
+          <div>
+            <label for="pointCX">Точка C: X</label>
+            <input id="pointCX" type="number" name="pointCX" step="1" min="0" max="10" required>          
+            <label for="pointCY">Y </label>
+            <input id="pointCY" type="number" name="pointCY" step="1" min="0" max="10" required>          
+
+
+          </div>
+          <div>
+            <label for="pointDX">Точка D: X</label>
+            <input id="pointDX" type="number" name="pointDX" step="1" min="0" max="10" required>          
+            <label for="pointDY">Y </label>
+            <input id="pointDY" type="number" name="pointDY" step="1" min="0" max="10" required>          
+
+          </div>
+
+
+        <div>
+            <p></p>
+            <input type="submit">
+            <span class="validity"></span>
+        </div>
+
+
+<div>
+        <canvas id="Canvas" width="300" height="200"
+        style="background-color:#eee; border:1px solid #ccc;">
+        Ваш браузер не поддерживает Canvas
+    </canvas>
+
+</div>
+
+      </form>
+  </body>
+</html>
