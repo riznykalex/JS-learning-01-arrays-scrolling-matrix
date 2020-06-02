@@ -8,24 +8,63 @@
     </style>
     <script>
 
-        function draw() {
-        var canvas = document.getElementById('Canvas');
-        if (canvas.getContext) {
-            ctx.strokeRect(50,50,50,50);
-        }
-        }
-
-
         function triangle(){
+
+          
         var canvas = document.getElementById("Canvas"), 
             context = canvas.getContext("2d");
-        context.beginPath();
-        context.moveTo(30, 20);
-        context.lineTo(150, 140);
-        context.lineTo(250, 30);
-        context.closePath();
-        context.strokeStyle = "red";
-        context.stroke();
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+ 
+            for (let x=0; x<10; x++){
+              for (let y=0; y<10; y++){
+              context.strokeStyle="#ccc";
+              context.strokeRect(x*40,y*40,40,40);
+              }
+
+            }
+
+
+
+        let AX = document.getElementById('pointAX').value*40;
+        let AY = 400-document.getElementById('pointAY').value*40;
+        let BX = document.getElementById('pointBX').value*40;
+        let BY = 400-document.getElementById('pointBY').value*40;
+        let CX = document.getElementById('pointCX').value*40;
+        let CY = 400-document.getElementById('pointCY').value*40;
+        let DX = document.getElementById('pointDX').value*40;
+        let DY = 400-document.getElementById('pointDY').value*40;
+
+
+            context.beginPath();
+            context.moveTo(AX, AY);
+            context.lineTo(BX, BY);
+            context.lineTo(CX, CY);
+            context.closePath();
+            context.strokeStyle ="red";
+
+            context.moveTo(DX, DY);
+            context.arc(DX,DY,3,0, Math.PI*2,true);
+            context.stroke();
+            context.font = "22px Verdana";
+            context.fillText("A", AX+5, AY-5);
+            context.fillText("B", BX+5, BY+5);
+            context.fillText("C", CX+5, CY+5);
+            context.fillText("D", DX+5, DY+5);
+
+            let k1 = (DX-AX)*(BY-AY)-(DY-AY)*(BX-AX);
+            let k2 = (DX-BX)*(CY-BY)-(DY-BY)*(CX-BX);
+            let k3 = (DX-CX)*(AY-CY)-(DY-CY)*(AX-CX);
+           
+           if ((k1<0)&&(k2<0)&&(k3<0)){
+              resultOK.textContent = 'Точка внутри треугольника!';
+
+           }else{
+              resultOK.textContent = 'Точка снаружи треугольника!';
+
+           }
+
+
     }
 
 
@@ -39,46 +78,45 @@
         </div>
         <div>
           <label for="pointAX">Точка A: X</label>
-          <input id="pointAX" type="number" name="pointAX" step="1" min="0" max="10" required>          
+          <input id="pointAX" type="number" name="pointAX" value="1" step="1" min="0" max="10" required>          
           <label for="pointAY">Y </label>
-          <input id="pointAY" type="number" name="pointAY" step="1" min="0" max="10" required>          
+          <input id="pointAY" type="number" name="pointAY" value="1" step="1" min="0" max="10" required>          
 
         </div>
         <div>
             <label for="pointBX">Точка B: X</label>
-            <input id="pointBX" type="number" name="pointAX" step="1" min="0" max="10" required>          
+            <input id="pointBX" type="number" name="pointBX" value="2" step="1" min="0" max="10" required>          
             <label for="pointBY">Y </label>
-            <input id="pointBY" type="number" name="pointBY" step="1" min="0" max="10" required>          
+            <input id="pointBY" type="number" name="pointBY" value="5" step="1" min="0" max="10" required>          
 
 
           </div>
           <div>
             <label for="pointCX">Точка C: X</label>
-            <input id="pointCX" type="number" name="pointCX" step="1" min="0" max="10" required>          
+            <input id="pointCX" type="number" name="pointCX" value="6" step="1" min="0" max="10" required>          
             <label for="pointCY">Y </label>
-            <input id="pointCY" type="number" name="pointCY" step="1" min="0" max="10" required>          
+            <input id="pointCY" type="number" name="pointCY" value="1" step="1" min="0" max="10" required>          
 
 
           </div>
           <div>
             <label for="pointDX">Точка D: X</label>
-            <input id="pointDX" type="number" name="pointDX" step="1" min="0" max="10" required>          
+            <input id="pointDX" type="number" name="pointDX" value="3" step="1" min="0" max="10" required>          
             <label for="pointDY">Y </label>
-            <input id="pointDY" type="number" name="pointDY" step="1" min="0" max="10" required>          
+            <input id="pointDY" type="number" name="pointDY" value="3" step="1" min="0" max="10" required>          
 
           </div>
 
-
         <div>
             <p></p>
-            <input type="submit">
-            <span class="validity"></span>
+            <input type="button" value="Click me" onclick="triangle();">
+            <span id="resultOK"> </span>
         </div>
 
 
 <div>
-        <canvas id="Canvas" width="300" height="200"
-        style="background-color:#eee; border:1px solid #ccc;">
+        <canvas id="Canvas" width="400" height="400"
+        style="background-color:#fff; border:1px solid #ccc;">
         Ваш браузер не поддерживает Canvas
     </canvas>
 
