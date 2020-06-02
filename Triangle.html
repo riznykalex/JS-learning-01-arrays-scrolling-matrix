@@ -56,11 +56,11 @@
             let k2 = (DX-BX)*(CY-BY)-(DY-BY)*(CX-BX);
             let k3 = (DX-CX)*(AY-CY)-(DY-CY)*(AX-CX);
            
-           if ((k1<0)&&(k2<0)&&(k3<0)){
-              resultOK.textContent = 'Точка внутри треугольника!';
+           if ((k1<=0)&&(k2<=0)&&(k3<=0)){
+              resultOK.textContent = 'Точка принадлежит треугольнику!';
 
            }else{
-              resultOK.textContent = 'Точка снаружи треугольника!';
+              resultOK.textContent = 'Точка не принадлежит треугольнику!';
 
            }
 
