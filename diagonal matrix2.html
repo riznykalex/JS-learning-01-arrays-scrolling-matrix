@@ -186,28 +186,87 @@
                         }
             }
 
+ 
+    while(true)
+    {
+
+        short i=0,j=0;
+        short size=rows*columns;            
+        bool downleft=true;                
+        bool changedirection=false;         
+ 
+        let i=0; j=0;
+        let size = arrayD.length * arrayD.length;//кол-во элементов динамического массива
+        downleft = true;                     //если true, то змейка движется вниз и влево, если false то вверх и вправо
+        change = false;                     //флаг необходимости смены направления
 
 
-            for (let k = 0; k <= arrayD.length - 1; k++) {
-                    let i = k;
-                    let j = 0;
-                    while (i >= 0){
-                        arrayD[i][j] = num;
-                        i--;
-                        j++;
-                        num++;
+
+
+        for (int counter=1;counter<=size;counter++)
+        {
+            Matrix[i][j]=counter;           //записываем текущий счёт в массив змейку
+ 
+            if (downleft)                   //формируем следующий индекс массива в случае движения вниз и влево
+            {
+                i++;                        //движение вниз
+                j--;                        //движение влево
+                if (i==rows)                //если вышли за предел массива вниз
+                    {
+                        i--;                //тогда меняем
+                        j+=2;               //направление текущего шага
+                        changedirection=true;       //и сообщаем о необходимости смены направления
                     }
+                else
+                    {
+                        if (j<0)         //если вышли за предел массива влево
+                            {
+                                j++;        //тогда меняем направление текущего шага
+                                changedirection=true;   //и сообщаем о необходимости смены направления
+                            }
+                    }
+            }      
+            if (!downleft) //формируем следующий индекс массива в случае движения вверх и вправо
+            {
+                i--;                        //движение вверх
+                j++;                        //движение вправо          
+                if (j==columns)             //если вышли за предел массива вправо
+                    {
+                        j--;                //тогда меняем
+                        i+=2;               //направление текущего шага
+                        changedirection=true;       //и сообщаем о необходимости смены направления
+                    }
+                else
+                    {
+                        if (i<0)         //если вышли за предел массива вверх
+                            {
+                                i++;        //тогда меняем направление текущего шага
+                                changedirection=true;   //и сообщаем о необходимости смены направления
+                            }
+                    }
+            }          
+            if (changedirection) downleft=!downleft;    //меняем направление
+            changedirection=false;  //обнуляем флаг необходимости смены направления
+        }  
+         
+        for (int i=0;i<rows;i++) //выводим получившийся массив с заполнением в виде змейки
+        {
+            for (int j=0;j<columns;j++)
+            {
+                cout<<Matrix[i][j]<<"\t";
             }
-            for (k = 1; k<=arrayD.length -1; k++){
-                let i = arrayD.length -1;
-                let j = k;
-                while (j <=arrayD.length - 1){
-                        arrayD[i][j] = num;
-                        i--;
-                        j++;
-                        num++;
-                }
-            }
+            cout<<endl;
+        }
+        cout<<endl;
+ 
+        for (int i=0;i<rows;i++) //удаляем динамический массив
+        {
+            delete [] Matrix[i];
+        }
+        system("PAUSE");
+    }
+    return 0;
+}
 
 
            /*
