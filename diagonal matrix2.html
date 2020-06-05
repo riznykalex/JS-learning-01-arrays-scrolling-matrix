@@ -130,46 +130,6 @@
 
         }
 
-        function snakeSortMatrix(array1) {
-
-            let lengthArr = array1.length * array1[0].length;
-            let tempItem = 0;
-            let i = 0;
-            let real_largest = 0;
-            let newOne = 0;
-
-            for (let z=0; z<lengthArr; z++) {
-                for (let firstIndex = 0; firstIndex < lengthArr; firstIndex++) {
-                    let largest = firstIndex;                                       //первый элемент самый большой
-
-                    for (let i = firstIndex; i < lengthArr; i++) {                  //считаем от большего
-
-                        real_largest = newSnakeIndex(firstIndex);                       //преобразовываем в 2х мерный индекс большого
-                        newOne = newSnakeIndex(i);                                      //преобразовываем в 2х мерный индекс следующего
-
-                        if (array1[real_largest.x][real_largest.y] > array1[newOne.x][newOne.y]) {      //сравниваем "большой" сс следующим
-                            largest = i;                                            //если след больше меняем индекс
-                            //console.log(largest);
-                        }
-                    }
-
-                    newOne = newSnakeIndex(firstIndex);                                   //преобразовываем в 2х мерный индекс нового первого
-                    real_largest = newSnakeIndex(largest);                                //преобразовываем в 2х мерный индекс нового большего
-
-                    tempItem = array1[newOne.x][newOne.y];                                  //обмен значений
-                    array1[newOne.x][newOne.y] = array1[real_largest.x][real_largest.y];
-                    array1[real_largest.x][real_largest.y] = tempItem;
-                }
-
-            }
-            return array1;
-
-        }
-
-
-
-
-
 
 
 
@@ -186,124 +146,57 @@
                         }
             }
 
- 
-    while(true)
-    {
 
-        short i=0,j=0;
-        short size=rows*columns;            
-        bool downleft=true;                
-        bool changedirection=false;         
- 
         let i=0; j=0;
-        let size = arrayD.length * arrayD.length;//кол-во элементов динамического массива
-        downleft = true;                     //если true, то змейка движется вниз и влево, если false то вверх и вправо
-        change = false;                     //флаг необходимости смены направления
+        let size = arrayD.length * arrayD.length;   //кол-во элементов  массива
+        downleft = true;                            //если true, то змейка движется вниз и влево, если false то вверх и вправо
+        change = false;                             //смена направления
 
 
-
-
-        for (int counter=1;counter<=size;counter++)
-        {
-            Matrix[i][j]=counter;           //записываем текущий счёт в массив змейку
+        for (let counter = 1; counter <=size ;counter++){
+           
+            arrayD[i][j] = counter;             // текущий элемент в массив 
  
-            if (downleft)                   //формируем следующий индекс массива в случае движения вниз и влево
-            {
-                i++;                        //движение вниз
-                j--;                        //движение влево
-                if (i==rows)                //если вышли за предел массива вниз
-                    {
-                        i--;                //тогда меняем
-                        j+=2;               //направление текущего шага
-                        changedirection=true;       //и сообщаем о необходимости смены направления
-                    }
-                else
-                    {
-                        if (j<0)         //если вышли за предел массива влево
+            if (downleft){                      //следующий индекс массива в случае движения вниз и влево
+                i++;                            //движение вниз
+                j--;                            //движение влево
+                if ( i === arrayD.length){      //предел массива вниз
+                        i--;                    //тогда меняем
+                        j = j+2;                //направление текущего шага
+                        change = true;          //смена направления
+                    }else{
+                        if ( j < 0)             //предел массива влево
                             {
-                                j++;        //тогда меняем направление текущего шага
-                                changedirection=true;   //и сообщаем о необходимости смены направления
+                                j++;            //тогда меняем направление текущего шага
+                                change = true;  //смена направления
                             }
                     }
             }      
-            if (!downleft) //формируем следующий индекс массива в случае движения вверх и вправо
-            {
-                i--;                        //движение вверх
-                j++;                        //движение вправо          
-                if (j==columns)             //если вышли за предел массива вправо
-                    {
-                        j--;                //тогда меняем
-                        i+=2;               //направление текущего шага
-                        changedirection=true;       //и сообщаем о необходимости смены направления
-                    }
-                else
-                    {
-                        if (i<0)         //если вышли за предел массива вверх
-                            {
-                                i++;        //тогда меняем направление текущего шага
-                                changedirection=true;   //и сообщаем о необходимости смены направления
+            if (!downleft){                     //следующий индекс массива в случае движения вверх и вправо
+                i--;                            //движение вверх
+                j++;                            //движение вправо          
+                if (j === arrayD.length){       //предел массива вправо
+                        j--;                    //тогда меняем
+                        i+=2;                   //направление текущего шага
+                        change=true;            //смена направления
+                    }else{
+                        if (i<0){               //предел массива вверх
+                                i++;            //тогда меняем направление текущего шага
+                                change=true;    //смена направления
                             }
                     }
             }          
-            if (changedirection) downleft=!downleft;    //меняем направление
-            changedirection=false;  //обнуляем флаг необходимости смены направления
-        }  
-         
-        for (int i=0;i<rows;i++) //выводим получившийся массив с заполнением в виде змейки
-        {
-            for (int j=0;j<columns;j++)
-            {
-                cout<<Matrix[i][j]<<"\t";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
- 
-        for (int i=0;i<rows;i++) //удаляем динамический массив
-        {
-            delete [] Matrix[i];
-        }
-        system("PAUSE");
-    }
-    return 0;
-}
-
-
-           /*
-            for (let d = 1; d < arrayD.length * 2; d++){
-                for (let i = d - 1; i > -1 && i < arrayD.length; i--){
-                        for (let j = 0; j != d; j++){
-                            
-                            console.log ("d " + d + " i " + i + " j " + i);
-
-                        (d % 2 ? arrayD[i][j] = 0 : arrayD[j][i] = 2);
-                    
-                       }    
-                    } 
-
-
-
-
-                for (let i = 1; i < d; i++){
-                            let j = d - i -1;
-                            arrayD[j][i] = i;
-                    } 
-
-                    */
-
-            //}
-                
-
-
-
+            if (change){downleft=!downleft};    //меняем направление
+                change=false;                   
+            }  
 
             let str ="";
             for (let i = 0; i < arrayD.length; i++){
                 for (let j = 0; j < arrayD.length; j++){
                     if (arrayD[i][j] > 9){
-                        str = str + " | " + arrayD[i][j];
+                        str = str + "| " + arrayD[i][j];
                     }else{
-                        str = str + " |  " + arrayD[i][j];
+                        str = str + "|  " + arrayD[i][j];
                     }
                     
                 }
@@ -313,21 +206,6 @@
         }
 
 
-        function showSnakeMatrix(sampleArray) {
-
-            let str ="";
-            for (let i = 0; i < sampleArray.length; i++) {           //строки
-                for (let j = 0; j < sampleArray[i].length; j++) {    //столбцы
-
-                    str = str + " | " + sampleArray[i][j];
-
-                }
-                str = str + "| \n";
-            }
-
-            matrixSnakeFill.textContent = str;
-
-        }
 
 
 
@@ -341,7 +219,7 @@
     <!---Заполнение элементов матрицы "Змейкой" из угла  -->
     <div>
         <p>Заполнение элементов матрицы "Змейкой" из угла</p>
-        <input type="button" value="Snake from Corner" onclick="matrixSnakeFillCorner(6)">
+        <input type="button" value="Snake from Corner" onclick="matrixSnakeFillCorner(5)">
 
         <p></p>
     </div>
