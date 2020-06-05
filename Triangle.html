@@ -57,10 +57,10 @@
             let k3 = (DX-CX)*(AY-CY)-(DY-CY)*(AX-CX);
            
            if ((k1<=0)&&(k2<=0)&&(k3<=0)){
-              resultOK.textContent = 'Точка принадлежит треугольнику!';
+              resultOK.textContent = 'Точка принадлежит треугольнику! (' + k1 + ' ' + k2 + ' ' + k3 + ')';
 
            }else{
-              resultOK.textContent = 'Точка не принадлежит треугольнику!';
+              resultOK.textContent = 'Точка не принадлежит треугольнику! (' + k1 + ' ' + k2 + ' ' + k3 + ')';
 
            }
 
