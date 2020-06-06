@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hide link</title>
+    <style></style>
+
+
+
+</head>
+<body>
+<div>
+
+
+    <div id="main">
+            <p>Click on link.</p>
+            <a id="myLink" href="" onclick="">Hello Link!</a>
+    </div>
+
+</div>
+
+
+</body>
+<script>
+
+ /*
+    (function ($) {
+        $
+    })(jQuery)
+*/
+    document.getElementById('myLink').onclick = function (e) {
+        e.preventDefault();
+        setTimeout((function () {
+            this.parentNode.removeChild(this);
+        }).bind(this),1000);
+    };
+
+
+
+
+    function deleteLink() {
+
+        let elem = document.querySelector('#myLink');
+        elem.remove();
+    }
+
+
+</script>
+</html>

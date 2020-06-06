@@ -370,163 +370,17 @@
 
 </head>
 <body>
-<div style="width: 30%; background-color: #cccccc; display: none">
-<!---Вывод массива-->
-    <div>
-        <input type="button" value="Show array"  onclick="startArray(arrayGlobal)">
-        <p></p>
-    </div>
-    <div id="resultShow"></div>
-    <div><p></p></div>
-
-<!---Наибольшее число массива-->
-    <div>
-        <input type="button" value="Largest One" onclick="LargestOne(arrayGlobal)">
-        <p></p>
-    </div>
-    <div id="largestShow"></div>
-    <div><p></p></div>
-
-
-<!---Наименьшее число массива-->
-    <div>
-        <input type="button" value="Smallest One" onclick="smallestOne(arrayGlobal)">
-        <p></p>
-    </div>
-    <div id="SmallestShow"></div>
-
-<!---Вывод массива c изменениями-->
 <div>
-    <input type="button" value="Replace" onclick="replaceItems(arrayGlobal)">
-    <p></p>
-</div>
-<div id="replaceShow"></div>
-<div><p></p></div>
-
-<!---Сортировка массива-->
-<div>
-    <input type="button" value="Sort Descending" onclick="sortArrayDesc(arrayGlobal)">
-    <p></p>
-</div>
-<div id="sortedShow"></div>
-<div><p></p></div>
-
-<!---Сортировка массива-->
-<div>
-    <input type="button" value="Bubble Sort Asc" onclick="sortArrayBubble(arrayGlobal)">
-    <p></p>
-</div>
-<div id="bubbleSortedShow"></div>
-<div><p></p></div>
-</div>
-
-
-<div>
-    <!---Сортировка массива c деформацией из центра -->
-    <div style="display: none">
-        <p>Сортировка массива c деформацией из центра</p>
-        <input type="button" value="Odd Sort Asc" onclick="oddSortArray(simpleArray)">
-        <input type="button" value="Test" onclick="changeIndexesFromCenter(simpleArray)">
-        <p></p>
-    </div>
-    <div id="oddSortedShow"></div>
-    <div><p></p></div>
-
-
-    <!---Сортировка массива c деформацией от края -->
-    <div style="display: none">
-        <p>Сортировка массива c деформацией от края</p>
-        <input type="button" value="Odd Sort Asc" onclick="00000(simpleArray)">
-
-        <p></p>
-    </div>
-    <div id="oddSortedShow0"></div>
-    <div><p></p></div>
-
-
-    <!---Двухмерная матрица ------------------------------------------------------------------VVVVV--------------------->
-    <div>
-        <p>Двухмерная матрица</p>
-        <!---- <input type="button" value="Random" onclick="generateMatrix(100)">---->
-        <input type="button" value="Show Matrix" onclick="matrixShow.textContent = showMatrix(matrix)">
-        <input type="button" value="Matrix Sort" onclick="sortMatrix(matrix)">
-        <input type="button" value="Snake Sort" onclick="snakeSortMatrix(matrix)">
-        <p></p>
-    </div>
-    <div id="matrixShow" style="white-space: pre-line;"></div>
-    <div><p></p></div>
 
 
     <div>
-        <p>Сортировка двухмерной матрицы</p>
-        <!---- <input type="button" value="Random" onclick="generateMatrix(100)">---->
-        <input type="button" value="Show Matrix sorted" onclick="matrixShow.textContent = showMatrix(matrix)">
-        <p></p>
-    </div>
-    <div id="matrixShow2" style="white-space: pre-line;"></div>
-    <div><p></p></div>
-
-
-
-
-    <!---Сумма всей матрицы -->
-    <div>
-        <p>Сумма всей матрицы </p>
-        <input type="button" value="Show Matrix Sum" onclick="showMatrixSum(matrix)">
-        <p></p>
-    </div>
-    <div id="matrixSum"></div>
-    <div><p></p></div>
-
-    <!---Сумма главной и побочной диагонали -->
-    <div>
-        <p>Сумма главной диагонали</p>
-        <input type="button" value="Left Diag Sum" onclick="showMatrixLeftDiagSum(matrix)">
-        <input type="button" value="Main Diag Sum" onclick="showMatrixMainDiagSum(matrix)">
-        <input type="button" value="Right Diag Sum" onclick="showMatrixRightDiagSum(matrix)">
-        <p></p>
-    </div>
-    <div id="matrixMainDiagSum"></div>
-    <div><p></p></div>
-
-
-
-    <!---Заполнение элементов матрицы "Змейкой" из угла  -->
-    <div>
-        <p>Заполнение элементов матрицы "Змейкой" из угла</p>
-        <input type="button" value="Snake from Corner" onclick="matrixSnakeFillCorner(4)">
+        <p>Вывод массива матрицы</p>
+        <input type="button" value="Snake from Corner" onclick="matrixFill(4)">
 
         <p></p>
     </div>
-    <div id="matrixSnakeFill" style="white-space: pre-line;"></div>
+    <div id="matrixSnakeFill" style="white-space: pre-line; font-family: 'Courier New'></div>
     <div><p></p></div>
-
-    <!---
-    <div>
-        <p>Определить принадлежность точки треугольнику</p>
-        <input type="button" value="Odd Sort Asc" onclick="00000(simpleArray)">
-        <p></p>
-    </div>
-    <div id="oddSortedShow00"></div>
-    <div><p></p></div>
-Формула Герона -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>

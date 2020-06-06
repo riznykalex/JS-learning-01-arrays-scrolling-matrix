@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Прототип</title>
+    <style></style>
+
+    <script>
+
+         Array.prototype.averageSum = function(){return matrixAverage(this)};
+
+        function showMatrix(arraySample) {
+
+            let str ="";
+            for (let i = 0; i < arraySample.length; i++) {
+                for (let j = 0; j < arraySample[i].length; j++) {
+
+                    if (arraySample[i][j] > 9){
+                        str = str + "| " + arraySample[i][j];
+                    }else{
+                        str = str + "|  " + arraySample[i][j];
+                    }
+
+                }
+                str = str + "| \n";
+            }
+
+            matrixShow.textContent = str;
+            averageShow.textContent = arraySample.averageSum();
+
+        }
+
+
+
+        function matrixFill(dim){
+            let arraySample=[];
+            let n=1;
+            for (let i=0; i<dim; i++ ){
+                arraySample[i] = [];
+                    for (let j=0; j<dim; j++){
+                        arraySample[i][j] = n;
+                        n++;
+                        }
+
+            }
+            return arraySample;
+        }
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+<div>
+
+
+    <div>
+        <p>Вывод массива матрицы</p>
+        <input type="button" value="Matrix" onclick="showMatrix(matrixFill(4))">
+
+        <p></p>
+    </div>
+    <div id="matrixShow" style="white-space: pre-wrap; font-family: 'Courier New', Courier, monospace;"></div>
+    <div>
+        <p>Среднее арифметическое</p>
+        <input type="button" value="Average" onclick="matrixAverage(matrixFill(4))">
+
+        <p></p>
+    </div>
+
+
+    <div id="averageShow"></div>
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>
