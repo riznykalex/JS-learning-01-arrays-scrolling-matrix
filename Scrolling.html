@@ -55,50 +55,7 @@
 
      </style>
 
-    <script>
 
-        var scrollHeight = Math.max(
-            document.body.scrollHeight, document.documentElement.scrollHeight,
-            document.body.offsetHeight, document.documentElement.offsetHeight,
-            document.body.clientHeight, document.documentElement.clientHeight
-        );
-
-        function scroooo() {
-            var elmnt = document.getElementById("Pink");
-
-            elmnt.scrollIntoView(true); // Top
-        }
-        //var topPos = d.offsetTop;
-
-
-
-
-        window.addEventListener('scroll', function() {
-            document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-
-        function toTop() {
-            window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
-
-
-
-    </script>
 
 </head>
 <body>
@@ -106,14 +63,14 @@
     <ul>
         <li id="grayMenuItem"><a href="#Agray" class="menuItem">Gray</a> </li>
         <li id="greenMenuItem"><a href="#Agreen" class="menuItem">Green</a> </li>
-        <li id="pinkMenuItem"><a href="" class="menuItem">Pink</a> </li>
+        <li id="pinkMenuItem"><a href="#Apink" class="menuItem">Pink</a> </li>
         <li id="yellowMenuItem"><a href="#Ayellow" class="menuItem">Yellow</a> </li>
     </ul>
 
 </div>
 <div id="main">
 
-    <div id="Gray" class="content" style="background: lightgray;"  onclick="scroooo()">
+    <div id="Gray" class="content" style="background: lightgray;">
         <a id="Agray"></a>
     </div>
 
@@ -132,6 +89,16 @@
 
 </div>
 
+<script>
+    function toTop() {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
 <button class="button" onClick="toTop()">
 To top
 </button>
@@ -139,5 +106,28 @@ To top
 <div id="showScroll" class="scrollinfo">
 </div>
 </body>
+<script>
 
+    var scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    window.addEventListener('scroll', function() {
+        document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+
+</script>
 </html>
